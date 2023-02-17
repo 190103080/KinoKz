@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+    <div class="container" th:insert="~{navbar.html}">
+    </div>
+
+    <div class="container">
+        <form th:action="@{'/privilege/' + ${user.id} + '/updatePrivilege'}" method="post" th:each="us : ${user}">
+            <input type="hidden" th:value="${user.id}">
+            <label>Privilege:</label> <br>
+
+<!--            <th:block th:each="role : ${permissionList}">-->
+                <input type="checkbox" th:each="role : ${permissionList}" th:checked="${role.id}" th:value="${role.id}" th:text="${role.name}" class="m-2">
+<!--            </th:block>-->
+
+            <button class="btn btn-success">Update</button>
+        </form>
+    </div>
+
+</body>
+</html>

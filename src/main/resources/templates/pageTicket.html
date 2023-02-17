@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+  <div class="container" th:insert="~{navbar.html}">
+
+  </div>
+
+  <div class="container">
+    <div th:each="ci : ${cinemas}">
+      <form th:action="@{'/addticket'}" method="post">
+        <input type="hidden" name="id" th:value="${cinemas.id}">
+        <label>Time:</label><br>
+        <input placeholder="Type cinema name" type="text" size="80" name="name"><br>
+        <label>Date:</label><br>
+        <input placeholder="Type cinema type" type="text" size="80" name="type"><br>
+        <label>Language:</label><br>
+        <input placeholder="Type cinema duration" type="text" size="80" name="duration"><br>
+        <label>Cost:</label><br>
+        <input placeholder="Type cinema release year" type="date" size="80" name="releaseYear"><br>
+        <label>Kinoteatry:</label><br>
+        <select th:each="ki : ${kinoteatry}">
+          <option selected th:text="${kinoteatry.name}"></option>
+        </select>
+        <label>Rating:</label><br>
+        <input placeholder="Type cinema rating" type="number" size="80" name="rating"><br>
+        <br>
+        <button class="btn btn-success">Add Ticket</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

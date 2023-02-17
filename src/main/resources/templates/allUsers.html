@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+    <div class="container" th:insert="navbar.html"></div>
+
+<!--    <div class="container">-->
+<!--      <table class="table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th scope="col">Id</th>-->
+<!--          <th scope="col">Email</th>-->
+<!--          <th scope="col">Full Name</th>-->
+<!--          <th scope="col">Password</th>-->
+<!--          <th scope="col">Roles</th>-->
+<!--          <th scope="col"></th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody th:each="us : ${users}">-->
+<!--        <tr>-->
+<!--          <th scope="row" th:text="${us.id}"></th>-->
+<!--          <td th:text="${us.fullName}"></td>-->
+<!--          <td th:text="${us.email}"></td>-->
+<!--          <td th:text="${us.password}"></td>-->
+<!--          <td th:text="${us.permissions}"></td>-->
+<!--          <td><a th:href="@{'/privilege/' + ${us.id}}"><button class="btn btn-primary">Privilege</button></a></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--      </table>-->
+<!--    </div>-->
+
+    <div class="container d-flex">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 580px">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a th:href="@{'/allCinema'}" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              All Cinema
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/addCinemaPage'}" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              Add Cinema
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/addKinoteatryPage'}" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+              Add Kinoteatry
+            </a>
+          </li>
+          <li>
+            <a th:href="@{'/allUsers'}" class="nav-link active" aria-current="page">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+              All Users
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+              Customers
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>mdo</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form class="dropdown-item" th:action="@{'/exit'}" method="post">
+                <button class="btn btn-outline-light">SIGN OUT</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column container" style="width: 1000px; height: 580px">
+        <div class="container">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Email</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Password</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody th:each="us : ${users}">
+            <tr>
+              <th scope="row" th:text="${us.id}"></th>
+              <td th:text="${us.fullName}"></td>
+              <td th:text="${us.email}"></td>
+              <td th:text="${us.password}"></td>
+              <td><a th:href="@{'/privilege/' + ${us.id}}"><button class="btn btn-primary">Privilege</button></a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>

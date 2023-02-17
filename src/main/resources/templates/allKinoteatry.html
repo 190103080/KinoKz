@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+<div class="container" th:insert="~{navbar.html}"></div>
+
+<div class="container mt-3 w-100">
+    <div class="row" style="justify-content: space-around">
+        <div class="card" style="width: 18rem;" th:each="ki : ${kinoteatrys}">
+            <img th:src="@{'/kinoteatry/' + ${ki.kiImage}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><strong th:text="${ki.name}"></strong></h5>
+                <p class="card-text" th:text="${ki.street}"></p>
+                <a th:href="@{'/detailsKinoteatry/' + ${ki.id}}" sec:authorize="hasAnyRole('ROLE_EDITOR', 'ROLE_ADMIN')" class="btn btn-primary"> Check </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

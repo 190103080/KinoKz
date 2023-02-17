@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{homehead.html}">
+</head>
+<body>
+
+    <div class="container" th:insert="~{navbar.html}"></div>
+
+
+    <div class="container" th:insert="~{events.html}"></div>
+
+    <br>
+
+    <div class="container" style="display: flex; justify-content: center">
+        <div class="first_button" style="display: inline-block">
+            <button type="button" style="border-radius: 15px; font-size: 18px;" class="btn btn-outline-secondary"><strong>Cinema</strong></button>
+        </div>
+        <div class="second_button" style="margin-left: 80px;">
+            <button type="button" style="border-radius: 15px; font-size: 18px;" class="btn btn-outline-secondary" ><strong>Concert</strong></button>
+        </div>
+        <div class="third_button" style="margin-left: 80px;">
+            <button type="button" style="border-radius: 15px; font-size: 18px;" class="btn btn-outline-secondary"><strong>Theatre</strong></button>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="container">
+        <section id="latest">
+            <ul id="autoWidth" class="cs-hidden">
+                <li class="item-a" th:each="ci : ${cinemas}">
+                    <div class="latest-box">
+                        <div class="card" style="width: 13rem;">
+                            <img th:src="@{'/avatars/' + ${ci.image}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${ci.name}"></h5>
+                                <a th:href="@{'/detailsKino/' + ${ci.id}}" class="btn" style="background-color: tomato; color: white">Buy Ticket</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <br><br>
+
+    <div class="container mt-3 w-100">
+        <div>
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <h1>Cinema</h1>
+                    <form class="d-flex">
+                        <a th:href="@{'/allKinoteatry'}">All</a>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <br>
+        <div class="row"style="justify-content: space-around">
+            <div class="card mb-3" style="max-width: 450px; justify-content: space-around" th:each="kino : ${kinoteatry}">
+                <div class="row g-0" th:if="${kino.id <= 8}">
+                    <div class="col-md-4">
+                        <img th:src="@{'/kinoteatry/' + ${kino.kiImage}}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${kino.name}"></h5>
+                            <p class="card-text"><small class="text-muted" th:text="${kino.street}"></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <hr>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <div class="justify-content-around" style="display: flex">
+
+            <div class="news_cinema" style="display: inline-block; width: 450px">
+                <h2>Cinema news</h2>
+                <hr>
+            </div>
+
+            <div class="top_cinema" style="width: 250px">
+                <h2>Top - 8</h2>
+                <hr>
+                <div class="justify-content-between" style="display: flex" th:each="sc  : ${sortcinema}">
+                        <div style="justify-content: left">
+                            <p th:text="${sc.name}"></p>
+                        </div>
+
+                        <div style="justify-content: right">
+                            <p th:text="${sc.rating}"></p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <script>
+        $(document).ready(function() {
+            $('#autoWidth').lightSlider({
+                autoWidth:true,
+                loop:true,
+                onSliderLoad: function() {
+                    $('#autoWidth').removeClass('cS-hidden');
+                }
+            });
+        });
+    </script>
+
+    <div th:insert="~{footer.html}"></div>
+
+</body>
+</html>

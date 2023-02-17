@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{ticketPageHead.html}">
+</head>
+<body>
+
+  <div class="container" th:insert="~{navbar.html}"></div>
+
+  <div class="container">
+    <form th:action="@{'/buyTicket'}" method="post">
+      <input type="hidden" name="id" th:each="ti : ${ticket}" th:value="${ti.id}">
+      <input type="hidden" name="user.id" th:value="${#authentication.getPrincipal().id}">
+<!--        <select name="reservedSeat.id">-->
+<!--            &lt;!&ndash;        <option th:value="${#authentication.getPrincipal().id}" th:text="${#authentication.getPrincipal().id}"></option>&ndash;&gt;-->
+<!--            <option th:value="${reservedSeat}" th:text="${user.id}"></option>-->
+<!--        </select>-->
+
+
+
+      <div class="movie-container">
+        <label>Pick a movie: </label>
+        <label th:each="ti : ${ticket}" th:text="${ti.session.cinemaModel.name}"></label>
+
+        <ul class="showcase">
+          <li>
+            <div class="seat"></div>
+            <small>N/A</small>
+          </li>
+          <li>
+            <div class="seat selected"></div>
+            <small>Selected</small>
+          </li>
+          <li>
+            <div class="seat occupied"></div>
+            <small>Occupied</small>
+          </li>
+        </ul>
+
+        <div class="container">
+          <div class="screen"></div>
+
+          <div class="row" th:each="se : ${seats}">
+            <div class="seat">
+              <input class="form-check-input" style="margin-left: 10px" type="hidden" name="reservedSeat.id" th:value="${se.id}" aria-label="...">
+            </div>
+          </div>
+
+          <p class="text">
+            You have selected <span id="count">0</span> seats for the total price of Rs. <span id="total">0</span>
+          </p>
+        </div>
+      </div>
+
+
+
+
+<!--      <div class="container d-flex justify-content-center">-->
+<!--        <div style="background-color: darkgray; height: 250px; width: 500px; margin: 15px 0; transform: rotateX(-45deg); box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7)">-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      -->
+<!--      <div>-->
+<!--        <div class="justify-content-between" style="display: flex" th:each="se : ${seats}">-->
+<!--          <div class="row d-inline-block" style="justify-content: center; margin-top: 10px">-->
+<!--            <input class="form-check-input" style="margin-left: 10px" type="checkbox" name="reservedSeat.id" th:value="${se.id}" aria-label="...">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <button class="btn btn-primary">Buy</button>
+    </form>
+  </div>
+
+
+</body>
+</html>

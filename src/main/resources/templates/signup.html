@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+      <div class="container" th:insert="~{navbar.html}"></div>
+
+      <div class="container text-center" style="margin-top: 90px">
+            <form th:action="@{'/signup'}" method="post">
+                  <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+                  <div class="w-25 form-floating" style="margin-left: 490px">
+                        <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                  </div><br>
+
+                  <div class="w-25 form-floating" style="margin-left: 490px">
+                        <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password:</label>
+                  </div><br>
+
+                  <div class="w-25 form-floating" style="margin-left: 490px">
+                        <input type="password" class="form-control" name="retypePassword" id="floatingRePassword" placeholder="Enter your password again">
+                        <label for="floatingRePassword">Repeat Password:</label>
+                  </div><br>
+
+                  <div class="w-25 form-floating" style="margin-left: 490px">
+                        <input type="text" class="form-control" name="fullName" id="floatingFullName" placeholder="Enter your full name">
+                        <label for="floatingFullName">Full Name:</label>
+                  </div><br>
+
+                  <button class="btn btn-lg btn-outline-dark">Sign Up</button>
+            </form>
+      </div>
+
+</body>
+</html>

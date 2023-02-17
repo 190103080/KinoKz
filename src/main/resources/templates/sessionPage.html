@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+  <div class="container" th:insert="~{navbar.html}"></div>
+
+
+    <div class="container">
+      <form th:action="@{'/addsession'}" method="post">
+<!--        <th:block th:each="ci : ${cinema}">-->
+<!--            <th:block th:each="ha : ${hall}">-->
+<!--              <input type="hidden" name="cinema.id" th:each="ci : ${cinema}" th:value="${ci.id}">-->
+<!--              <input type="hidden" name="hall_id" th:value="${ha.id}">-->
+              <label>Id:</label>
+                  <select name="cinemaModel.id">
+                      <option th:each="ci : ${cinema}" th:value="${ci.id}" th:text="${ci.getId()}"></option>
+                  </select> <br><br>
+              <label>Data:</label><br>
+                  <input type="date" name="data"><br><br>
+              <label>Time:</label><br>
+                  <select name="kinoteatry.id">
+                    <option th:each="ki : ${kinoteatry}" th:value="${ki.id}" th:text="${ki.name}"></option>
+                  </select>
+              <br><br>
+              <label>Time:</label><br>
+                  <select name="time">
+                    <option selected>09:00</option>
+                    <option>12:00</option>
+                    <option>15:00</option>
+                    <option>18:00</option>
+                    <option>21:00</option>
+                    <option>00:00</option>
+                  </select>
+              <br><br>
+              <label>Language:</label><br>
+                  <select name="language">
+                    <option selected>Kaz</option>
+                    <option>Rus</option>
+                    <option>Eng</option>
+                  </select> <br> <br>
+
+              <label>Hall:</label><br>
+              <select name="hall.id">
+                  <option selected th:each="ha : ${hall}" th:text="${ha.id}"></option>
+              </select> <br> <br>
+
+              <button class="btn d-grid gap-2 col-12 mx-auto" style="color: white; background-color: tomato; border: orange;">Add Session</button>
+<!--            </th:block>-->
+<!--          </th:block>-->
+        </th:block>
+      </form>
+    </div>
+
+</body>
+</html>

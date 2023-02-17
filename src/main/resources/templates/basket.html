@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+    <div class="container" th:insert="navbar.html"></div>
+
+    <br><br>
+
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cinema</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Reserved Seat</th>
+                <th scope="col">Data</th>
+                <th scope="col">Language</th>
+                <th scope="col">Time</th>
+                <th scope="col">Hall</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ti : ${ticket}" th:style="${ti.session.data<=localDate?'color:red;':'color:green;'}" th:if="${#authentication.getPrincipal().id} == ${ti.user.id}" >
+                    <th scope="row" th:text="${ti.session.id}"></th>
+                    <th scope="row" th:text="${ti.session.cinemaModel.name}"></th>
+                    <td th:text="${ti.cost}"></td>
+                    <td th:text="${ti.reservedSeat.id}"></td>
+                    <td th:text="${ti.session.data}"></td>
+                    <td th:text="${ti.session.language}"></td>
+                    <td th:text="${ti.session.time}"></td>
+                    <td th:text="${ti.session.hall.id}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

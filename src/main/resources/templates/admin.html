@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+    <div class="container" th:insert="~{navbar.html}"></div>
+
+<!--    <div class="container">-->
+<!--        <h1>SECURITY SAMPLE</h1>-->
+<!--        <h2>WELCOME TO <strong>ADMIN</strong> PANEL</h2>-->
+<!--        <h2>DEAR <span th:text="${#authentication.getPrincipal().fullName}"></span> </h2>-->
+<!--        <br>-->
+<!--        <form th:action="@{'/exit'}" method="post">-->
+<!--          <button class="btn btn-outline-dark">SIGN OUT</button>-->
+<!--        </form>-->
+<!--        <br><br>-->
+<!--        <h3><a class="container" th:href="@{'/allCinema'}" sec:authorize="hasAnyRole('ROLE_EDITOR', 'ROLE_ADMIN')">All Cinema</a></h3>-->
+<!--        <h3><a class="container" th:href="@{'/addCinemaPage'}" sec:authorize="hasAnyRole('ROLE_EDITOR', 'ROLE_ADMIN')">Add Cinema</a></h3>-->
+<!--        <h3><a class="container" th:href="@{'/addKinoteatryPage'}" sec:authorize="hasAnyRole('ROLE_EDITOR', 'ROLE_ADMIN')">Add Kinoteatry</a></h3>-->
+<!--    </div>-->
+
+    <div class="container d-flex">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 580px">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a th:href="@{'/allCinema'}" class="nav-link active" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                        All Cinema
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{'/addCinemaPage'}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                        Add Cinema
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{'/addKinoteatryPage'}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                        Add Kinoteatry
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{'/allUsers'}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                        All Users
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                        Customers
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>mdo</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <form class="dropdown-item" th:action="@{'/exit'}" method="post">
+                            <button class="btn btn-outline-light">SIGN OUT</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column container" style="width: 1000px; height: 580px">
+
+        </div>
+    </div>
+
+</body>
+</html>

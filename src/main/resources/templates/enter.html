@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+
+<body>
+
+  <div class="container" th:insert="~{navbar.html}"></div>
+
+<!--  <div class="container text-center" style="margin-top: 90px">-->
+<!--      <p style="font-size: 22px;"><strong>Enter the details <br> to get a ticket</strong></p>-->
+<!--        <form th:action="@{'/auth'}" method="post">-->
+<!--            <p style="color: gray">E-mail:</p>-->
+<!--            <input type="email" name="user_email" placeholder="Enter your email">-->
+<!--            <br><br>-->
+<!--            <p style="color: gray">Password:</p>-->
+<!--            <input type="password" name="user_password" placeholder="Enter your password">-->
+<!--            <br><br>-->
+<!--            <button class="btn btn-outline-dark">Sign In</button>-->
+<!--        </form>-->
+<!--  </div>-->
+
+<br><br><br>
+  <div class="text-center">
+      <main class="form-signin">
+          <form th:action="@{'/auth'}" method="post">
+              <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+              <div class="w-25 form-floating" style="margin-left: 575px">
+                  <input type="email" class="form-control" name="user_email" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Email address</label>
+              </div><br>
+
+              <div class="w-25 form-floating" style="margin-left: 575px">
+                  <input type="password" class="form-control" name="user_password" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+              </div>
+                <br>
+              <button class="btn btn-lg btn-outline-dark" type="submit">Sign in</button>
+          </form>
+      </main>
+  </div>
+
+</body>
+</html>

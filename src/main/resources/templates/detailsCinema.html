@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+  <div class="container" th:insert="~{navbar.html}"></div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <form th:action="@{'/saveeCinema'}" method="post" enctype="multipart/form-data" th:if="${cinemas != null}">
+          <input type="hidden" name="id" th:value="${cinemas.id}">
+          <label>Name:</label><br>
+          <input type="text" size="80" name="name" th:value="${cinemas.name}"><br>
+          <label>Type:</label><br>
+          <input type="text" size="80" name="type" th:value="${cinemas.type}"><br>
+          <label>Duration:</label><br>
+          <input type="text" size="80" name="duration" th:value="${cinemas.duration}"><br>
+          <label>Release year:</label><br>
+          <input type="text" size="80" name="releaseYear" th:value="${cinemas.releaseYear}"><br>
+          <label>Rating:</label><br>
+          <input type="text" size="80" name="rating" th:value="${cinemas.rating}"><br>
+          <label>Image:</label><br>
+<!--          <img th:src="@{ '/viewpic/' + ${#authentication.getPrincipal().avatar}}" width="300px">-->
+            <input type="file" name="image_pic">
+          <br><br>
+
+          <button class="btn btn-success" style="display: flex">Change</button>
+
+          <form th:action="@{'/deletecinema'}" method="post" th:if="${cinemas != null}">
+            <input type="hidden" name="id" th:value="${cinemas.id}">
+            <button class="btn btn-danger" size="50">Delete</button>
+          </form>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

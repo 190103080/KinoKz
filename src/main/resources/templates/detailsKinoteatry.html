@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:insert="~{head.html}">
+</head>
+<body>
+
+<div class="container" th:insert="~{navbar.html}"></div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form th:action="@{'/saveeKinoteatry'}" method="post" enctype="multipart/form-data" th:if="${kinoteatry != null}">
+        <input type="hidden" name="id" th:value="${kinoteatry.id}">
+        <label>Name:</label><br>
+        <input type="text" size="80" name="name" th:value="${kinoteatry.name}"><br>
+        <label>Street:</label><br>
+        <input type="text" size="80" name="street" th:value="${kinoteatry.street}"><br>
+        <label>Image:</label><br>
+        <!--          <img th:src="@{ '/viewpic/' + ${#authentication.getPrincipal().avatar}}" width="300px">-->
+        <input type="file" name="kiImage_pic">
+        <br>
+
+        <button class="btn btn-success">Change</button>
+      </form>
+
+      <br><br>
+
+      <form th:action="@{'/deleteKinoteatry'}" method="post" th:if="${kinoteatry != null}">
+        <input type="hidden" name="id" th:value="${kinoteatry.id}">
+        <button class="btn btn-danger" size="50">Delete</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
